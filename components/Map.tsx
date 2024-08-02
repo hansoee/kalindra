@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
-import L, { LatLngExpression, LatLngTuple, DivIcon } from 'leaflet';
+import L, { LatLngTuple, DivIcon } from 'leaflet';
 
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
@@ -40,7 +40,10 @@ const Map: React.FC<MapProps> = ({ zoom = defaults.zoom, positions }) => {
         complete: (result) => {
           console.log(result.data); // Log the parsed data for debugging
 
-          const coords = result.data.map((row: { Latitude: string; Longitude: string }) => {
+          // Assert the type of the parsed data
+          const data = result.data as { Latitude: string; Longitude: string }[];
+
+          const coords = data.map((row) => {
             const lat = parseFloat(row.Latitude);
             const lon = parseFloat(row.Longitude);
             
