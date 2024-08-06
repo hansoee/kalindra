@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "cp ./node_modules/pdfjs-dist/build/pdf.worker.min.mjs ./public/"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
@@ -14,6 +15,7 @@
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "next": "14.2.5",
     "papaparse": "^5.4.1",
+    "pdfjs-dist": "^4.5.136",
     "react": "^18",
     "react-dom": "^18",
     "react-leaflet": "^4.2.1",
