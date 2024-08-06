@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import { LatLngTuple } from 'leaflet';
 import Head from 'next/head';
 import Three from '../components/Three';
-import Cetak from '../components/Cetak'; 
 
 const Home: React.FC = () => {
   const [selectedMap, setSelectedMap] = useState('interactive');
@@ -48,16 +47,6 @@ const Home: React.FC = () => {
         <input 
           type="radio" 
           name="mapType" 
-          value="printable" 
-          checked={selectedMap === 'printable'} 
-          onChange={() => handleMapChange('printable')}
-        />
-        Peta Cetak
-      </label>
-      <label>
-        <input 
-          type="radio" 
-          name="mapType" 
           value="3d" 
           checked={selectedMap === '3d'} 
           onChange={() => handleMapChange('3d')}
@@ -66,7 +55,6 @@ const Home: React.FC = () => {
       </label>
 
       {selectedMap === 'interactive' && <Map positions={positions} zoom={17} />}
-      {selectedMap === 'printable' && <Cetak />}
       {selectedMap === '3d' && <Three />}
     </div>
   );
